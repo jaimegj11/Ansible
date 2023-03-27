@@ -1,0 +1,41 @@
+---
+- hosts: all
+  tasks:
+    - name: Install basic packages
+      apt: name={{ item }} state=present
+      loop:
+        - vim
+        - ethtool
+        - sudo
+        - lshw
+        - git
+        - tcpdump
+        - arp-scan
+
+    - name: Answer to the EULA question for ttf-mscorefonts-installer package
+      shell: /bin/echo "ttf-mscorefonts-installer  msttcorefonts/accepted-mscorefonts-eula boolean true" | /usr/bin/debconf-set-selections
+
+    - name: Install ttf-mscorefonts-installer
+      apt: name=ttf-mscorefonts-installer state=present
+
+    - name: Install Spotify from official repo
+      block:
+      - name: APT key
+        ansible.builtin.get_url:
+          url: https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg
+          dest: /etc/apt/trusted.gpg.d/spotify.asc
+
+      - name: Dearmor key
+        shell: cat /etc/apt/trusted.gpg.d/spotify.asc | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+
+      - name: Repo
+        ansible.builtin.apt_repository:
+          repo: "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/spotify.gpg] http://repository.spotify.com stable non-free"
+          state: present
+      - name: Install Spotify Client
+        apt:
+          name=spotify-client
+          state=present
+
+    - name: Configure hosts
+      ping:
