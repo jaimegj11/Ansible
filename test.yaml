@@ -3,16 +3,5 @@
   hosts: test
   become: yes
   tasks:
-    - name : Install basic tools
-      apt:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - vim
-        - git
-        - curl
-        - wget
-        - unzip
-        - zip
-        - python-pip
-        - python-dev
+    - name : Upgrade and update 
+      apt: upgrade=dist update_cache=yes
