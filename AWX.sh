@@ -2,18 +2,18 @@
 
 # Upgrade and Update the system
 
-sudo apt update && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -yq
 
 # Install some packages
 echo -n "Installing "
 
-sudo apt install git -y
+sudo apt install git -yq
 echo -n "Git... "
-sudo apt install make -y
+sudo apt install make -yq
 echo -n "Make... "
-sudo apt install python3-pip -y
+sudo apt install python3-pip -yq
 echo -n "Python3-pip... "
-sudo apt install curl -y
+sudo apt install curl -yq
 echo -n "Curl... "
 
 # Install Kubernetes (K3s)
@@ -36,7 +36,12 @@ cd ~
 git clone https://github.com/kurokobo/awx-on-k3s.git
 cd awx-on-k3s
 
+AWX_HOST="awx.overtest.lan"
+
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -out ./base/tls.crt -keyout ./base/tls.key -subj "/CN=${AWX_HOST}/O=${AWX_HOST}" -addext "subjectAltName = DNS:${AWX_HOST}"
+
 # Create the AWX instance
+
 
 cd ~/awx-on-k3s/base
 
