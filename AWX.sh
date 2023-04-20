@@ -49,6 +49,7 @@ sed -i 's/hostname: awx.example.com/hostname: awx.overtest.lan/g' awx.yaml
 
 sed -i 's/- password=Ansible123!  / - password=jaime /g' kustomization.yaml
 
+cd ~/awx-on-k3s
 
 sudo mkdir -p /data/postgres-13
 sudo mkdir -p /data/projects
