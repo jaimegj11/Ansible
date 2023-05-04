@@ -25,7 +25,7 @@
 
     - name: Unzip the Zabbix-Agent
 
-      win_unzip:
+      comunity.windows.win_unzip:
 
         src: C:\Zabbix\zabbix_agent-6.4.2-windows-amd64-openssl.zip
 
