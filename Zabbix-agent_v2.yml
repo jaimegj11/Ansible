@@ -42,8 +42,4 @@
 
       win_service:
 
-        name: Zabbix Agent
-
-        state: started
-
-        enabled: yes
+        win_shell: C:\Zabbix\bin\zabbix_agentd.exe --start
