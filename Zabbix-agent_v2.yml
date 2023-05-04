@@ -25,24 +25,24 @@
 
     - name: Unzip the Zabbix-Agent
 
-      comunity.windows.win_unzip:
+      win_unzip:
 
         src: C:\Zabbix\zabbix_agent-6.4.2-windows-amd64-openssl.zip
 
         dest: C:\Zabbix
 
-        creates: C:\Zabbix\zabbix_agentd.exe
+        
+    - name: Modifi the Zabbix-Agentd.conf file
 
-    - name: Create conf file
+      win_lineinfile:
 
-      copy:
+        path: C:\Zabbix\zabbix_agentd.conf
 
-        dest: C:\Zabbix\zabbix_agentd.conf
+        regexp: '^Server='
 
-        content: |
+        line: 'Server=192.168.122.1'
 
-          Server=192.168.122.1
-          Hostname={{ansible_hostname}}
+
 
     - name: Install Zabbix-Agent
 
