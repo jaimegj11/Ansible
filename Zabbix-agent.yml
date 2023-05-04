@@ -2,7 +2,7 @@
 
 - name: Installing Zabbix-Agent Windows
 
-  hosts: win 
+  hosts: all 
 
   tasks:
 
