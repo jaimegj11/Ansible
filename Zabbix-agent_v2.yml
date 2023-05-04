@@ -30,7 +30,7 @@
 
     - name: Modifi the Zabbix-Agentd.conf file
 
-      win_lcommand: (Get-content C:\Zabbix\zabbix_agentd.conf).replace('Server=127.0.0.1','Server=192.168.122.1') | Set-Content C:\Zabbix\zabbix_agentd.conf
+      win_command: (Get-content C:\Zabbix\zabbix_agentd.conf).replace('Server=127.0.0.1','Server=192.168.122.1') | Set-Content C:\Zabbix\zabbix_agentd.conf
 
 
 
