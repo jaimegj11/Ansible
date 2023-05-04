@@ -1,0 +1,29 @@
+---
+
+- name: Installing Zabbix-Agent Windows
+
+  hosts: win 
+
+  tasks:
+
+    - name: Download the Apache installer
+
+      win_get_url:
+
+        url: https://cdn.zabbix.com/zabbix/binaries/stable/6.4/6.4.2/zabbix_agent-6.4.2-windows-amd64-openssl.msi
+
+        dest: C:\users\jaime\Desktop
+
+    - name: Install MSI
+
+      win_package: 
+
+        path: C:\users\jaime\Desktop\zabbix_agent-6.4.2-windows-amd64-openssl.msi
+
+        arguments:
+
+          - /install
+
+          - /passive
+
+          - /norestart
