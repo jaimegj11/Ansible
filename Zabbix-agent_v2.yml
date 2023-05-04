@@ -1,0 +1,49 @@
+---
+
+- name: Installing Zabbix-Agent Windows
+
+  hosts: all 
+
+  tasks:
+
+    - name: Create directory
+
+      #Crear directorio
+      win_file:
+
+        path: C:\Zabbix
+
+        state: directory
+
+    - name: Download Zabbix-Agent
+
+      win_get_url:
+
+        url:  https://cdn.zabbix.com/zabbix/binaries/stable/6.4/6.4.2/zabbix_agent-6.4.2-windows-amd64-openssl.zip
+
+        dest: C:\Zabbix
+
+    - name: Unzip the Zabbix-Agent
+
+      win_unzip:
+
+        src: C:\Zabbix\zabbix_agent-6.4.2-windows-amd64-openssl.zip
+
+        dest: C:\Zabbix
+
+        creates: C:\Zabbix\zabbix_agentd.exe
+
+    - name: Create conf file
+
+      copy:
+
+        dest: C:\Zabbix\zabbix_agentd.conf
+
+        content: |
+
+          Server=192.168.122.1
+          Hostname={{ansible_hostname}}
+
+    - name: Install Zabbix-Agent
+
+      win_command: C:\Zabbix\zabbix_agentd.exe --config C:\Zabbix\zabbix_agentd.conf --install
