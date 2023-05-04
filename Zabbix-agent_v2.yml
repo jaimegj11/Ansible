@@ -26,15 +26,23 @@
     - name: Unzip the Zabbix-Agent
 
       win_shell: tar -xf C:\Zabbix\zabbix_agent-6.4.2-windows-amd64-openssl.zip -C C:\Zabbix
+      
+    - name: Delete the Zabbix-Agent.zip
 
+      win_shell: rm C:\Zabbix\zabbix_agent-6.4.2-windows-amd64-openssl.zip
 
     - name: Modifi the Zabbix-Agentd.conf file
 
-      win_shell: (Get-content  -Path 'C:\Zabbix\conf\zabbix_agentd.conf' ).replace('Server=127.0.0.1','Server=192.168.122.1') | Set-Content C:\Zabbix\conf\zabbix_agentd.conf
+      win_shell: (Get-content  -Path 'C:\Zabbix\conf\zabbix_agentd.conf' ).replace('Server=127.0.0.1','Server=192.168.122.90') | Set-Content C:\Zabbix\conf\zabbix_agentd.conf
 
 
 
     - name: Install Zabbix-Agent
 
       win_shell: C:\Zabbix\bin\zabbix_agentd.exe --config C:\Zabbix\conf\zabbix_agentd.conf --install
+
+
+    - name: Reiniciamos el equipo
+
+      win_command: shutdown /r /t 0
 
