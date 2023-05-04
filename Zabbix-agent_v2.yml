@@ -36,4 +36,4 @@
 
     - name: Install Zabbix-Agent
 
-      win_shell: C:\Zabbix\zabbix_agentd.exe --config C:\Zabbix\conf\zabbix_agentd.conf --install
+      win_shell: C:\Zabbix\bin\zabbix_agentd.exe --config C:\Zabbix\conf\zabbix_agentd.conf --install
