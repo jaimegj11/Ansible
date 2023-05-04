@@ -25,13 +25,9 @@
 
     - name: Unzip the Zabbix-Agent
 
-      win_unzip:
+      win_command: tar -xf C:\Zabbix\zabbix_agent-6.4.2-windows-amd64-openssl.zip -C C:\Zabbix
 
-        src: C:\Zabbix\zabbix_agent-6.4.2-windows-amd64-openssl.zip
 
-        dest: C:\Zabbix
-
-        
     - name: Modifi the Zabbix-Agentd.conf file
 
       win_lineinfile:
