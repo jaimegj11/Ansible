@@ -42,6 +42,11 @@
       win_shell: C:\Zabbix\bin\zabbix_agentd.exe --config C:\Zabbix\conf\zabbix_agentd.conf --install
 
 
+
+    - name: Open the Zabbix ports 
+
+      win_shell: netsh advfirewall firewall add rule name="Zabbix Agent" dir=in action=allow protocol=TCP localport=10050
+
     - name: Reiniciamos el equipo
 
       win_command: shutdown /r /t 0
