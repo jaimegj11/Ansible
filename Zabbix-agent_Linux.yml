@@ -1,0 +1,36 @@
+---
+
+- name: Installing Zabbix-Agent Linux
+
+  hosts: all 
+
+  tasks:
+
+    - name: Download Zabbix-Agent
+
+      apt:
+        name: zabbix-agent
+        state: present
+
+    - name: Config Zabbix-Agent
+       
+      path: /etc/zabbix/zabbix_agentd.conf
+      regexp: 'ServerActive=127.0.0.1'
+      replace: 'ServerActive=192.168.122.90'
+
+    - name: Config Zabbix-Agent_2
+       
+      path: /etc/zabbix/zabbix_agentd.conf
+      regexp: 'Server=127.0.0.1'
+      replace: 'Server=192.168.122.90'
+
+    - name: Start Zabbix-Agent
+
+      service:
+        name: zabbix-agent
+        state: started
+        enabled: yes
+
+
+
+    
