@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  tasks:
+
+    - name: Install net-tools
+      apt:
+        name: net-tools
+        state: present
+        update_cache: yes
