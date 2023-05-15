@@ -1,0 +1,12 @@
+---
+
+- name: Ping_win
+
+  hosts: all
+
+  tasks:
+
+    - name: Enable ping win
+      
+      win_command: netsh firewall set icmpsetting 8 enable
+      
