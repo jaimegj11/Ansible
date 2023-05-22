@@ -8,3 +8,12 @@
         name: net-tools
         state: present
         update_cache: yes
+    
+    - name: Get all open Ports 
+      shell: netstat -tulpn | grep LISTEN
+      register: open_ports
+
+    - name: Print all open Ports
+
+      debug:
+        msg: "{{ open_ports.stdout_lines }}"
