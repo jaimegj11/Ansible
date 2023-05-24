@@ -1,11 +1,4 @@
 # This Script is for install AWX on Ubuntu 22.04 LTS AWX version 22.0.0 with kubernetes
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCPFad0sUAmfYRpvPmFncc5pEqP2oMAv5qmSJrxBGgh
-HnwbQNtQkp8G/4B9szKOK4PQ+PTlUL1FuL5o+JTypQtlB/DDJkKcqlO8kfAn5vHtV5uYNbQgzeLKUKvfh2gzR0uV9odl1QafHkhDtA5M
-I6u7uVwOqJAqMNnOX5KnkO9vrfPYepypkzby9HEOzkwmjGlEwtX59DYGTchQw3xhRj3abd46rIeKJWAHOHGV4zvOAgkevS4Oc7m82edd
-d0w+rymLXgwT/HlFkJQx4zntmVj9UxRaoAC1TaPxD59kM7CqqimrYfBVFiTnQYsTRmq1dFcvyOi64p9bWp+WbcLP6laxwBoUuzSGKv5V
-jB0Qx2lsBjSm43bO2dks0syirrjBZ/gfQP6FdqqwhvwgL9WhAXGgA4lHbUp4J6JqoVOaf1LcYexZcqfJmnsVegxKhgdAqz+53/YSNi0Y
-UmXN+VXLGVT7DzY0X3f7lrqVqiYyk6bstrq2uzSTOthDhUaBSb0qYxs= jaime
-
 # Upgrade and Update the system
 
 sudo apt update && sudo apt upgrade -yq
